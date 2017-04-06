@@ -1,0 +1,4 @@
+http://google.com.br
+http://httpbin.org/basic-auth/user/passwd user:passwd
+http://failurl
+http://dmenezes.com.br/404

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='checker.css') }}">
+        <meta http-equiv="Refresh" content="{{ refresh }}" />
+        <title>Checker 0.1 [{{checker.total_fail + checker.total_timeout}}]</title>
+    </head>
+    <body>
+        <section id="content">
+          <div class="resume">
+            <span class="total">{{checker.total_urls}}</span>
+            <span class="ok">{{checker.total_ok}}</span>
+            <span class="fail">{{checker.total_fail}}</span>
+            <span class="timeout">{{checker.total_timeout}}</span>
+          </div>
+
+          <ul class="clearfix">
+          {% for site, response, status in result %}
+            <li class="{{ status }}">
+              <p class="status">{{ response.status_code }}</p>
+              <a href="{{ site }}" target="_blank">{{ site }}</a>
+              <span>em {{ response.elapsed.total_seconds() }} segundos</span>
+            </li>
+          {% endfor %}
+          </ul>
+
+          <footer>
+            <p>Ultima verificação: {{ last_check }}</p>
+          </footer>
+        </section>
+    </body>
+</html>
